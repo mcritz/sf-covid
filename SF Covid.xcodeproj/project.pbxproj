@@ -7,13 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F2D0D1027BB2CAB00CF903B /* SF_CovidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D0D0F27BB2CAB00CF903B /* SF_CovidApp.swift */; };
+		0F2D0D1027BB2CAB00CF903B /* SFCovidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D0D0F27BB2CAB00CF903B /* SFCovidApp.swift */; };
 		0F2D0D1227BB2CAB00CF903B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D0D1127BB2CAB00CF903B /* ContentView.swift */; };
 		0F2D0D1427BB2CAE00CF903B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F2D0D1327BB2CAE00CF903B /* Assets.xcassets */; };
-		0F2D0D1727BB2CAE00CF903B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F2D0D1627BB2CAE00CF903B /* Preview Assets.xcassets */; };
 		0F2D0D2227BB2CAF00CF903B /* SF_CovidTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D0D2127BB2CAF00CF903B /* SF_CovidTests.swift */; };
 		0F2D0D2C27BB2CAF00CF903B /* SF_CovidUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D0D2B27BB2CAF00CF903B /* SF_CovidUITests.swift */; };
 		0F2D0D2E27BB2CAF00CF903B /* SF_CovidUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D0D2D27BB2CAF00CF903B /* SF_CovidUITestsLaunchTests.swift */; };
+		0F2D0D3B27BB2D2400CF903B /* SummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D0D3A27BB2D2400CF903B /* SummaryViewModel.swift */; };
+		0F2D0D4327BB35F700CF903B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2D0D4227BB35F700CF903B /* WidgetKit.framework */; platformFilter = maccatalyst; };
+		0F2D0D4527BB35F700CF903B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2D0D4427BB35F700CF903B /* SwiftUI.framework */; platformFilter = maccatalyst; };
+		0F2D0D4827BB35F700CF903B /* SF_Covid_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D0D4727BB35F700CF903B /* SF_Covid_Widget.swift */; };
+		0F2D0D4E27BB35F900CF903B /* SF_Covid_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D0D4927BB35F700CF903B /* SF_Covid_Widget.intentdefinition */; };
+		0F2D0D4F27BB35F900CF903B /* SF_Covid_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D0D4927BB35F700CF903B /* SF_Covid_Widget.intentdefinition */; };
+		0F2D0D5227BB35F900CF903B /* SF Covid WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0F2D0D4027BB35F700CF903B /* SF Covid WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0F2D0D5727BB360900CF903B /* SummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D0D3A27BB2D2400CF903B /* SummaryViewModel.swift */; };
+		0F2D0D5927BB374200CF903B /* CovidSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D0D5827BB374200CF903B /* CovidSummaryView.swift */; };
+		0F2D0D5A27BB375B00CF903B /* CovidSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D0D5827BB374200CF903B /* CovidSummaryView.swift */; };
+		0F40DC4D27BB6EF80076366E /* UnsplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F40DC4C27BB6EF80076366E /* UnsplashService.swift */; };
+		0FFBD92427C6BD470018E0F3 /* DateFormatter+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBD92327C6BD470018E0F3 /* DateFormatter+Custom.swift */; };
+		0FFBD92527C6BDDE0018E0F3 /* DateFormatter+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBD92327C6BD470018E0F3 /* DateFormatter+Custom.swift */; };
+		0FFBD92627C6BDE70018E0F3 /* UnsplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F40DC4C27BB6EF80076366E /* UnsplashService.swift */; };
+		0FFBD92B27CAA2B70018E0F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F2D0D1327BB2CAE00CF903B /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,11 +45,32 @@
 			remoteGlobalIDString = 0F2D0D0B27BB2CAB00CF903B;
 			remoteInfo = "SF Covid";
 		};
+		0F2D0D5027BB35F900CF903B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F2D0D0427BB2CAB00CF903B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F2D0D3F27BB35F700CF903B;
+			remoteInfo = "SF Covid WidgetExtension";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0F2D0D5627BB35F900CF903B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0F2D0D5227BB35F900CF903B /* SF Covid WidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0F2D0D0C27BB2CAB00CF903B /* SF Covid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SF Covid.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F2D0D0F27BB2CAB00CF903B /* SF_CovidApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SF_CovidApp.swift; sourceTree = "<group>"; };
+		0F2D0D0F27BB2CAB00CF903B /* SFCovidApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFCovidApp.swift; sourceTree = "<group>"; };
 		0F2D0D1127BB2CAB00CF903B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0F2D0D1327BB2CAE00CF903B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F2D0D1627BB2CAE00CF903B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -45,6 +80,18 @@
 		0F2D0D2727BB2CAF00CF903B /* SF CovidUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SF CovidUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F2D0D2B27BB2CAF00CF903B /* SF_CovidUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SF_CovidUITests.swift; sourceTree = "<group>"; };
 		0F2D0D2D27BB2CAF00CF903B /* SF_CovidUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SF_CovidUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0F2D0D3A27BB2D2400CF903B /* SummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewModel.swift; sourceTree = "<group>"; };
+		0F2D0D4027BB35F700CF903B /* SF Covid WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SF Covid WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F2D0D4227BB35F700CF903B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		0F2D0D4427BB35F700CF903B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		0F2D0D4727BB35F700CF903B /* SF_Covid_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SF_Covid_Widget.swift; sourceTree = "<group>"; };
+		0F2D0D4927BB35F700CF903B /* SF_Covid_Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SF_Covid_Widget.intentdefinition; sourceTree = "<group>"; };
+		0F2D0D4C27BB35F900CF903B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F2D0D4D27BB35F900CF903B /* SF_Covid_Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SF_Covid_Widget.entitlements; sourceTree = "<group>"; };
+		0F2D0D5827BB374200CF903B /* CovidSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidSummaryView.swift; sourceTree = "<group>"; };
+		0F40DC4C27BB6EF80076366E /* UnsplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashService.swift; sourceTree = "<group>"; };
+		0FFBD92327C6BD470018E0F3 /* DateFormatter+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Custom.swift"; sourceTree = "<group>"; };
+		0FFBD92827CA9E740018E0F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +116,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0F2D0D3D27BB35F700CF903B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F2D0D4527BB35F700CF903B /* SwiftUI.framework in Frameworks */,
+				0F2D0D4327BB35F700CF903B /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +134,8 @@
 				0F2D0D0E27BB2CAB00CF903B /* SF Covid */,
 				0F2D0D2027BB2CAF00CF903B /* SF CovidTests */,
 				0F2D0D2A27BB2CAF00CF903B /* SF CovidUITests */,
+				0F2D0D4627BB35F700CF903B /* SF Covid Widget */,
+				0F2D0D4127BB35F700CF903B /* Frameworks */,
 				0F2D0D0D27BB2CAB00CF903B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +146,7 @@
 				0F2D0D0C27BB2CAB00CF903B /* SF Covid.app */,
 				0F2D0D1D27BB2CAF00CF903B /* SF CovidTests.xctest */,
 				0F2D0D2727BB2CAF00CF903B /* SF CovidUITests.xctest */,
+				0F2D0D4027BB35F700CF903B /* SF Covid WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,11 +154,15 @@
 		0F2D0D0E27BB2CAB00CF903B /* SF Covid */ = {
 			isa = PBXGroup;
 			children = (
-				0F2D0D0F27BB2CAB00CF903B /* SF_CovidApp.swift */,
+				0F2D0D0F27BB2CAB00CF903B /* SFCovidApp.swift */,
 				0F2D0D1127BB2CAB00CF903B /* ContentView.swift */,
+				0F2D0D5827BB374200CF903B /* CovidSummaryView.swift */,
 				0F2D0D1327BB2CAE00CF903B /* Assets.xcassets */,
 				0F2D0D1827BB2CAE00CF903B /* SF_Covid.entitlements */,
 				0F2D0D1527BB2CAE00CF903B /* Preview Content */,
+				0F2D0D3A27BB2D2400CF903B /* SummaryViewModel.swift */,
+				0F40DC4C27BB6EF80076366E /* UnsplashService.swift */,
+				0FFBD92327C6BD470018E0F3 /* DateFormatter+Custom.swift */,
 			);
 			path = "SF Covid";
 			sourceTree = "<group>";
@@ -129,6 +192,27 @@
 			path = "SF CovidUITests";
 			sourceTree = "<group>";
 		};
+		0F2D0D4127BB35F700CF903B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0F2D0D4227BB35F700CF903B /* WidgetKit.framework */,
+				0F2D0D4427BB35F700CF903B /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0F2D0D4627BB35F700CF903B /* SF Covid Widget */ = {
+			isa = PBXGroup;
+			children = (
+				0FFBD92827CA9E740018E0F3 /* Assets.xcassets */,
+				0F2D0D4727BB35F700CF903B /* SF_Covid_Widget.swift */,
+				0F2D0D4927BB35F700CF903B /* SF_Covid_Widget.intentdefinition */,
+				0F2D0D4C27BB35F900CF903B /* Info.plist */,
+				0F2D0D4D27BB35F900CF903B /* SF_Covid_Widget.entitlements */,
+			);
+			path = "SF Covid Widget";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,10 +223,12 @@
 				0F2D0D0827BB2CAB00CF903B /* Sources */,
 				0F2D0D0927BB2CAB00CF903B /* Frameworks */,
 				0F2D0D0A27BB2CAB00CF903B /* Resources */,
+				0F2D0D5627BB35F900CF903B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0F2D0D5127BB35F900CF903B /* PBXTargetDependency */,
 			);
 			name = "SF Covid";
 			productName = "SF Covid";
@@ -185,6 +271,23 @@
 			productReference = 0F2D0D2727BB2CAF00CF903B /* SF CovidUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		0F2D0D3F27BB35F700CF903B /* SF Covid WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F2D0D5327BB35F900CF903B /* Build configuration list for PBXNativeTarget "SF Covid WidgetExtension" */;
+			buildPhases = (
+				0F2D0D3C27BB35F700CF903B /* Sources */,
+				0F2D0D3D27BB35F700CF903B /* Frameworks */,
+				0F2D0D3E27BB35F700CF903B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SF Covid WidgetExtension";
+			productName = "SF Covid WidgetExtension";
+			productReference = 0F2D0D4027BB35F700CF903B /* SF Covid WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -206,6 +309,9 @@
 						CreatedOnToolsVersion = 13.2.1;
 						TestTargetID = 0F2D0D0B27BB2CAB00CF903B;
 					};
+					0F2D0D3F27BB35F700CF903B = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 				};
 			};
 			buildConfigurationList = 0F2D0D0727BB2CAB00CF903B /* Build configuration list for PBXProject "SF Covid" */;
@@ -224,6 +330,7 @@
 				0F2D0D0B27BB2CAB00CF903B /* SF Covid */,
 				0F2D0D1C27BB2CAF00CF903B /* SF CovidTests */,
 				0F2D0D2627BB2CAF00CF903B /* SF CovidUITests */,
+				0F2D0D3F27BB35F700CF903B /* SF Covid WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -233,7 +340,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F2D0D1727BB2CAE00CF903B /* Preview Assets.xcassets in Resources */,
 				0F2D0D1427BB2CAE00CF903B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,6 +358,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0F2D0D3E27BB35F700CF903B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FFBD92B27CAA2B70018E0F3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -260,7 +374,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F2D0D1227BB2CAB00CF903B /* ContentView.swift in Sources */,
-				0F2D0D1027BB2CAB00CF903B /* SF_CovidApp.swift in Sources */,
+				0F2D0D1027BB2CAB00CF903B /* SFCovidApp.swift in Sources */,
+				0FFBD92427C6BD470018E0F3 /* DateFormatter+Custom.swift in Sources */,
+				0F2D0D4F27BB35F900CF903B /* SF_Covid_Widget.intentdefinition in Sources */,
+				0F2D0D3B27BB2D2400CF903B /* SummaryViewModel.swift in Sources */,
+				0F2D0D5927BB374200CF903B /* CovidSummaryView.swift in Sources */,
+				0F40DC4D27BB6EF80076366E /* UnsplashService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +400,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0F2D0D3C27BB35F700CF903B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F2D0D4E27BB35F900CF903B /* SF_Covid_Widget.intentdefinition in Sources */,
+				0F2D0D4827BB35F700CF903B /* SF_Covid_Widget.swift in Sources */,
+				0F2D0D5727BB360900CF903B /* SummaryViewModel.swift in Sources */,
+				0F2D0D5A27BB375B00CF903B /* CovidSummaryView.swift in Sources */,
+				0FFBD92527C6BDDE0018E0F3 /* DateFormatter+Custom.swift in Sources */,
+				0FFBD92627C6BDE70018E0F3 /* UnsplashService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -293,6 +425,11 @@
 			isa = PBXTargetDependency;
 			target = 0F2D0D0B27BB2CAB00CF903B /* SF Covid */;
 			targetProxy = 0F2D0D2827BB2CAF00CF903B /* PBXContainerItemProxy */;
+		};
+		0F2D0D5127BB35F900CF903B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F2D0D3F27BB35F700CF903B /* SF Covid WidgetExtension */;
+			targetProxy = 0F2D0D5027BB35F900CF903B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -415,6 +552,7 @@
 		0F2D0D3227BB2CAF00CF903B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "SF Covid/SF_Covid.entitlements";
@@ -422,17 +560,19 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SF Covid/Preview Content\"";
-				DEVELOPMENT_TEAM = KW9Y3X7XPD;
+				DEVELOPMENT_TEAM = FS69ZZRN45;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.playstation.SF-Covid";
+				PRODUCT_BUNDLE_IDENTIFIER = science.pixel.sfcovid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -442,6 +582,7 @@
 		0F2D0D3327BB2CAF00CF903B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "SF Covid/SF_Covid.entitlements";
@@ -449,17 +590,19 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SF Covid/Preview Content\"";
-				DEVELOPMENT_TEAM = KW9Y3X7XPD;
+				DEVELOPMENT_TEAM = FS69ZZRN45;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.playstation.SF-Covid";
+				PRODUCT_BUNDLE_IDENTIFIER = science.pixel.sfcovid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -538,6 +681,64 @@
 			};
 			name = Release;
 		};
+		0F2D0D5427BB35F900CF903B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "SF Covid Widget/SF_Covid_Widget.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FS69ZZRN45;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "SF Covid Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "SF Covid Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = science.pixel.sfcovid.sfcovidwidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		0F2D0D5527BB35F900CF903B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "SF Covid Widget/SF_Covid_Widget.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FS69ZZRN45;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "SF Covid Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "SF Covid Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = science.pixel.sfcovid.sfcovidwidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -573,6 +774,15 @@
 			buildConfigurations = (
 				0F2D0D3827BB2CAF00CF903B /* Debug */,
 				0F2D0D3927BB2CAF00CF903B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0F2D0D5327BB35F900CF903B /* Build configuration list for PBXNativeTarget "SF Covid WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F2D0D5427BB35F900CF903B /* Debug */,
+				0F2D0D5527BB35F900CF903B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
