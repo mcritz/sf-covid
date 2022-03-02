@@ -25,6 +25,8 @@ struct CovidSummaryView: View {
             VStack(alignment: .trailing) {
                 Text("New Covid Cases")
                     .font(.title2)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
                     .foregroundColor(.init("AccentContrastColor"))
                     .brightness(0.2)
                     .opacity(0.8)
