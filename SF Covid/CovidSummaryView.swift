@@ -20,25 +20,28 @@ struct CovidSummaryView: View {
     
     var body: some View {
         GeometryReader { geo in
-            VStack(alignment: .leading) {
+            HStack {
+                Spacer()
+            VStack(alignment: .trailing) {
                 Text("New Covid Cases")
                     .font(.title2)
                     .foregroundColor(.init("AccentContrastColor"))
                     .brightness(0.2)
                     .opacity(0.8)
                 Text(summaryVM.caseCount)
-                    .font(.system(size: 1234, weight: .light, design: .rounded))
-                    .minimumScaleFactor(0.01)
+                    .font(.system(size: 144, weight: .light, design: .rounded))
+                    .minimumScaleFactor(0.3)
                     .lineLimit(1)
                     .foregroundColor(.init("AccentContrastColor"))
                     .brightness(0.25)
                     .opacity(0.9)
                 Text("as of " + summaryVM.lastUpdated)
-                    .font(.title3)
+                    .font(.callout)
                     .textCase(.uppercase)
                     .foregroundColor(.init("AccentContrastColor"))
                     .brightness(0.2)
                     .opacity(0.8)
+            }
             }
             .foregroundColor(.white)
             .task {

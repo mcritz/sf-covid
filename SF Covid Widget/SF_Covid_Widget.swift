@@ -5,6 +5,7 @@
 //  Created by Critz, Michael on 2/14/22.
 //
 
+import Charts
 import WidgetKit
 import SwiftUI
 import Intents
@@ -54,14 +55,28 @@ struct SF_Covid_WidgetEntryView : View {
         }
         .padding(10.0)
         .background {
-            LinearGradient(colors: [
-                                Color("AccentColor"),
-                                Color("Secondary")
-                            ],
-                           startPoint: .top,
-                           endPoint: .bottom)
-                .ignoresSafeArea()
-        }
+            Chart(data: entry.model.chartValues)
+                .chartStyle(AreaChartStyle(fill:
+                                            LinearGradient(colors: [
+                                                Color.black.opacity(0.4),
+                                                Color.black.opacity(0.35),
+                                                Color.black.opacity(0.25),
+                                                Color.black.opacity(0.1)
+                                            ],
+                                           startPoint: .top,
+                                           endPoint: .bottom)
+                                          ))
+                .background {
+                    LinearGradient(colors: [
+                                        Color("AccentColor"),
+                                        Color("Secondary")
+                                    ],
+                                   startPoint: .top,
+                                   endPoint: .bottom)
+                        .ignoresSafeArea()
+                }
+}
+
     }
 }
 

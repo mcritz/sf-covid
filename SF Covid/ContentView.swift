@@ -1,19 +1,37 @@
+import Charts
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject private var summaryVM = SummaryViewModel()
+    
     var body: some View {
-        CovidSummaryView(summaryVM: SummaryViewModel())
-            .frame(minWidth: 240, idealWidth: 320, maxWidth: .infinity, minHeight: 120, idealHeight: 360, maxHeight: .infinity)
-            .padding([.trailing, .bottom, .leading])
-            .background {
-                LinearGradient(colors: [
-                                    Color("AccentColor"),
-                                    Color("Secondary")
-                                ],
-                               startPoint: .top,
-                               endPoint: .bottom)
-                    .ignoresSafeArea()
-            }
+        HStack {
+            Spacer()
+            CovidSummaryView(summaryVM: summaryVM)
+                .padding([.trailing, .bottom, .leading])
+        }
+                .background {
+                    Chart(data: summaryVM.chartValues)
+                        .chartStyle(AreaChartStyle(fill:
+                                                    LinearGradient(colors: [
+                                                        Color.black.opacity(0.4),
+                                                        Color.black.opacity(0.35),
+                                                        Color.black.opacity(0.25),
+                                                        Color.black.opacity(0.1)
+                                                    ],
+                                                   startPoint: .top,
+                                                   endPoint: .bottom)
+                                                  ))
+                        .background {
+                            LinearGradient(colors: [
+                                                Color("AccentColor"),
+                                                Color("Secondary")
+                                            ],
+                                           startPoint: .top,
+                                           endPoint: .bottom)
+                                .ignoresSafeArea()
+                        }
+        }
     }
 }
 
