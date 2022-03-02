@@ -15,12 +15,14 @@
       "subtype" : "42mm"
     },
     {
+      "filename" : "icon_29pt@2x.png",
       "idiom" : "watch",
       "role" : "companionSettings",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "icon_29pt@3x.png",
       "idiom" : "watch",
       "role" : "companionSettings",
       "scale" : "3x",
@@ -34,6 +36,7 @@
       "subtype" : "45mm"
     },
     {
+      "filename" : "icon_40pt@2x.png",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
@@ -97,6 +100,7 @@
       "subtype" : "45mm"
     },
     {
+      "filename" : "Icon.png",
       "idiom" : "watch-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
