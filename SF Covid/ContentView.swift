@@ -8,7 +8,7 @@ struct ContentView: View {
         HStack {
             Spacer()
             CovidSummaryView(summaryVM: summaryVM)
-                .padding([.trailing, .bottom, .leading])
+                .padding()
         }
                 .background {
                     Chart(data: summaryVM.chartValues)
@@ -22,6 +22,8 @@ struct ContentView: View {
                                                    startPoint: .top,
                                                    endPoint: .bottom)
                                                   ))
+                        .padding(.top, 20)
+                        .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
                         .background {
                             LinearGradient(colors: [
                                                 Color("AccentColor"),
