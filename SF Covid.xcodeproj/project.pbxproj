@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F080EEB27F21B9F0015534B /* CovidChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F080EEA27F21B9F0015534B /* CovidChartView.swift */; };
+		0F080EEC27F21B9F0015534B /* CovidChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F080EEA27F21B9F0015534B /* CovidChartView.swift */; };
+		0F080EED27F21B9F0015534B /* CovidChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F080EEA27F21B9F0015534B /* CovidChartView.swift */; };
+		0F080EEE27F21B9F0015534B /* CovidChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F080EEA27F21B9F0015534B /* CovidChartView.swift */; };
+		0F080EEF27F21B9F0015534B /* CovidChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F080EEA27F21B9F0015534B /* CovidChartView.swift */; };
 		0F2D0D1027BB2CAB00CF903B /* SFCovidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D0D0F27BB2CAB00CF903B /* SFCovidApp.swift */; };
 		0F2D0D1227BB2CAB00CF903B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D0D1127BB2CAB00CF903B /* ContentView.swift */; };
 		0F2D0D1427BB2CAE00CF903B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F2D0D1327BB2CAE00CF903B /* Assets.xcassets */; };
@@ -195,6 +200,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F080EEA27F21B9F0015534B /* CovidChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidChartView.swift; sourceTree = "<group>"; };
 		0F2D0D0C27BB2CAB00CF903B /* SF Covid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SF Covid.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F2D0D0F27BB2CAB00CF903B /* SFCovidApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFCovidApp.swift; sourceTree = "<group>"; };
 		0F2D0D1127BB2CAB00CF903B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -394,6 +400,7 @@
 				0F2D0D3A27BB2D2400CF903B /* SummaryViewModel.swift */,
 				0F40DC4C27BB6EF80076366E /* UnsplashService.swift */,
 				0FFBD92327C6BD470018E0F3 /* DateFormatter+Custom.swift */,
+				0F080EEA27F21B9F0015534B /* CovidChartView.swift */,
 			);
 			path = "SF Covid";
 			sourceTree = "<group>";
@@ -796,7 +803,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					0F2D0D0B27BB2CAB00CF903B = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -988,6 +995,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F2D0D1227BB2CAB00CF903B /* ContentView.swift in Sources */,
+				0F080EEB27F21B9F0015534B /* CovidChartView.swift in Sources */,
 				0F2D0D1027BB2CAB00CF903B /* SFCovidApp.swift in Sources */,
 				0FFBD92427C6BD470018E0F3 /* DateFormatter+Custom.swift in Sources */,
 				0F2D0D4F27BB35F900CF903B /* SF_Covid_Widget.intentdefinition in Sources */,
@@ -1020,6 +1028,7 @@
 			files = (
 				0F2D0D4E27BB35F900CF903B /* SF_Covid_Widget.intentdefinition in Sources */,
 				0F2D0D4827BB35F700CF903B /* SF_Covid_Widget.swift in Sources */,
+				0F080EEC27F21B9F0015534B /* CovidChartView.swift in Sources */,
 				0F2D0D5727BB360900CF903B /* SummaryViewModel.swift in Sources */,
 				0F2D0D5A27BB375B00CF903B /* CovidSummaryView.swift in Sources */,
 				0FFBD92527C6BDDE0018E0F3 /* DateFormatter+Custom.swift in Sources */,
@@ -1032,6 +1041,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F93AB4827CD3A0C003A30A8 /* SF_Covid_MobileApp.swift in Sources */,
+				0F080EED27F21B9F0015534B /* CovidChartView.swift in Sources */,
 				0F93AB6F27CD3A2D003A30A8 /* ContentView.swift in Sources */,
 				0F93AB7027CD3A2D003A30A8 /* CovidSummaryView.swift in Sources */,
 				0F93AB7127CD3A2D003A30A8 /* DateFormatter+Custom.swift in Sources */,
@@ -1064,6 +1074,7 @@
 			files = (
 				0FE8D72927CFE2E600CCFB7A /* NotificationController.swift in Sources */,
 				0FE8D75D27CFE35600CCFB7A /* ContentView.swift in Sources */,
+				0F080EEF27F21B9F0015534B /* CovidChartView.swift in Sources */,
 				0FE8D75F27CFE40700CCFB7A /* DateFormatter+Custom.swift in Sources */,
 				0FE8D76027CFE40B00CCFB7A /* SummaryViewModel.swift in Sources */,
 				0FE8D72D27CFE2E600CCFB7A /* ComplicationController.swift in Sources */,
@@ -1099,6 +1110,7 @@
 				0FFFA39D27CFDF7900AEF3AE /* DateFormatter+Custom.swift in Sources */,
 				0FFFA39A27CFDF3400AEF3AE /* SummaryViewModel.swift in Sources */,
 				0FFFA39B27CFDF4D00AEF3AE /* CovidSummaryView.swift in Sources */,
+				0F080EEE27F21B9F0015534B /* CovidChartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1280,6 +1292,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "SF Covid/SF_Covid.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1310,6 +1323,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "SF Covid/SF_Covid.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1411,6 +1425,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = "SF Covid Widget/SF_Covid_Widget.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FS69ZZRN45;
@@ -1440,6 +1455,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = "SF Covid Widget/SF_Covid_Widget.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FS69ZZRN45;

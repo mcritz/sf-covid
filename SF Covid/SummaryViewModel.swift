@@ -3,13 +3,13 @@ import Foundation
 protocol SummaryViewRepresentable: ObservableObject {
     var caseCount: String { get }
     var lastUpdated: String { get }
-    func update() async throws
+    func update(_ days: Int) async throws
 }
 
 final class PlaceHolderSummary: SummaryViewRepresentable {
     var caseCount = "\(Int.random(in: 1...10_000).formatted())"
     var lastUpdated = Date.now.formatted(.dateTime)
-    func update() async throws {
+    func update(_ days: Int) async throws {
         caseCount = "\(Int.random(in: 1...10_000).formatted())"
         lastUpdated = Date.now.formatted(.dateTime)
     }
@@ -17,25 +17,50 @@ final class PlaceHolderSummary: SummaryViewRepresentable {
 
 final class SummaryViewModel: SummaryViewRepresentable {
     @Published var caseCount: String
+    @Published var average: String
     @Published var lastUpdated: String
     @Published var chartValues: [Double] = []
     private let covidData: CovidData
     
+    enum Errors: Error {
+        case dataError(reason: String)
+    }
+    
     @MainActor
-    func update() async throws {
+    func update(_ days: Int = 60) async throws {
         let entries = try await covidData.update()
+        let oneWeekAgoIndex = entries.count - 7
+        let lastSeven = Array(entries[oneWeekAgoIndex...])
+        self.average = String(average(lastSeven))
         self.caseCount = entries.last?.new_cases ?? "Error"
         self.lastUpdated = entries.last?.data_as_of?.formatted() ?? "Error"
-        let numberToTrim = covidData.chartNormalizedValues.count - 60 // days to display
-        let stepAlongTheWay = covidData.chartNormalizedValues.dropFirst(numberToTrim)
-        self.chartValues = Array(stepAlongTheWay)
+        let numberToTrim = entries.count - days // days to display
+        guard numberToTrim > 0,
+              numberToTrim < entries.count else {
+            throw Errors.dataError(reason: "Cannot drop more days than values exist")
+        }
+        let stepAlongTheWay = entries
+            .dropFirst(numberToTrim)
+            .filter { _ in
+                true
+        }
+        let normals = covidData.normalize(stepAlongTheWay)
+        self.chartValues = normals
+    }
+    
+    private func average(_ entries: [CovidEntry]) -> Int {
+        let sum = entries.reduce(into: 0) { prev, thisEntry in
+            prev += (Int(thisEntry.new_cases) ?? 0)
+        }
+        let average = sum / entries.count
+        return average
     }
 
     init() {
         self.covidData = CovidData()
         self.caseCount = ""
         self.lastUpdated = "Updating…"
-        
+        self.average = ""
         Task {
             try await update()
         }
@@ -52,6 +77,14 @@ final class CovidData: ObservableObject {
     @Published var chartNormalizedValues: [Double] = []
     private let decoder: JSONDecoder
     
+    enum Errors: Error {
+        case noDirectory
+    }
+    
+    enum Constants: String {
+        case dataFileName = "data.json"
+    }
+    
     init() {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(.customSFData)
@@ -61,10 +94,10 @@ final class CovidData: ObservableObject {
         }
     }
     
-    private func normalize(_ entries: [CovidEntry]) -> [Double] {
-        let justCases = entries.map({ entry in
+    public func normalize(_ entries: [CovidEntry]) -> [Double] {
+        let justCases = entries.map { entry in
             Double(entry.new_cases)
-        })
+        }
         let highest = justCases.reduce(into: 0.0) { partialResult, next in
             guard let next = next,
                   next > partialResult else {
@@ -81,20 +114,49 @@ final class CovidData: ObservableObject {
         return normalizedValues
     }
     
+    private func load(_ fileName: String = Constants.dataFileName.rawValue) throws -> Data {
+        guard let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            throw Errors.noDirectory
+        }
+        let sourceURL = directory.appendingPathComponent(fileName)
+        let data = try Data(contentsOf: sourceURL)
+        return data
+    }
+    
+    private func save(_ data: Data, as fileName: String = Constants.dataFileName.rawValue) async throws {
+        guard let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            throw Errors.noDirectory
+        }
+        let destinationURL = directory.appendingPathComponent(fileName)
+        try data.write(to: destinationURL)
+    }
+    
     @discardableResult
     func update() async throws -> [CovidEntry] {
+        var someEntries = [CovidEntry]()
         let url = URL(string: "https://data.sfgov.org/resource/gyr2-k29z.json")!
         let request = URLRequest(url: url)
-        let res = try await URLSession.shared.data(for: request, delegate: nil)
-        let someEntries = try decoder.decode([CovidEntry].self, from: res.0)
-        self.entries = someEntries.sorted(by: { alpha, brava in
+        do {
+            // Load from the network
+            let res = try await URLSession.shared.data(for: request, delegate: nil)
+            Task(priority: .low) {
+                try await save(res.0)
+            }
+            someEntries = try decoder.decode([CovidEntry].self, from: res.0)
+        } catch {
+            // If network fails, try the local storage
+            let data = try load()
+            someEntries = try decoder.decode([CovidEntry].self, from: data)
+        }
+        let sortedEntries = someEntries.sorted(by: { alpha, brava in
             guard let apple = alpha.specimen_collection_date,
                   let banana = brava.specimen_collection_date else {
                 return false
             }
             return apple < banana
         })
-        return self.entries
+        self.chartNormalizedValues = normalize(sortedEntries)
+        return sortedEntries
     }
 }
 

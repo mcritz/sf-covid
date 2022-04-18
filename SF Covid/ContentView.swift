@@ -3,25 +3,28 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject private var summaryVM = SummaryViewModel()
-    
+    @Environment(\.openURL) private var openURL
+    @SceneStorage("ChartDays") private var days: Int = 60
+    private let sfCovidDataURL = URL(string: "https://sf.gov/data/covid-19-cases-and-deaths")!
+
     var body: some View {
         HStack {
             Spacer()
-            CovidSummaryView(summaryVM: summaryVM)
-                .padding()
+            HStack {
+                Spacer()
+                CovidSummaryView(summaryVM: summaryVM)
+                    .padding()
+            }
         }
                 .background {
-                    Chart(data: summaryVM.chartValues)
-                        .chartStyle(AreaChartStyle(fill:
-                                                    LinearGradient(colors: [
-                                                        Color.black.opacity(0.4),
-                                                        Color.black.opacity(0.35),
-                                                        Color.black.opacity(0.25),
-                                                        Color.black.opacity(0.1)
-                                                    ],
-                                                   startPoint: .top,
-                                                   endPoint: .bottom)
-                                                  ))
+                    ZStack(alignment: .bottomLeading) {
+                    VStack(spacing: 4) {
+                        CovidChartView()
+                            .environmentObject(summaryVM)
+                        Rectangle()
+                            .fill(Color.black.opacity(0.1))
+                            .frame(height: 60)
+                    }
                         .padding(.top, 20)
                         .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
                         .background {
@@ -33,6 +36,45 @@ struct ContentView: View {
                                            endPoint: .bottom)
                                 .ignoresSafeArea()
                         }
+                        VStack {
+                            Spacer()
+                            HStack {
+                                Button(action: {
+                                    openURL(sfCovidDataURL) { accepted in
+                                        print("Tapped URL", accepted)
+                                    }
+                                }, label: {
+                                    HStack(alignment: .firstTextBaseline) {
+                                        Image(systemName: "safari")
+                                        Text("SF Covid")
+                                    }
+                                })
+                                .padding(.vertical, 15)
+                                .padding(.leading, 10)
+                                Spacer()
+                                Picker("", selection: $days) {
+                                    Text("365")
+                                        .tag(365)
+                                    Text("60")
+                                        .tag(60)
+                                    Text("30")
+                                        .tag(30)
+                                    Text("14")
+                                        .tag(14)
+                                }
+                                .accentColor(Color("Secondary"))
+                                .pickerStyle(SegmentedPickerStyle())
+                                .padding()
+                                .onChange(of: days) { value in
+                                    Task {
+                                        try await summaryVM.update(value)
+                                    }
+                                }
+                            }
+                            .tint(.accentColor)
+                        }
+                        .ignoresSafeArea(.all)
+                    }
         }
     }
 }

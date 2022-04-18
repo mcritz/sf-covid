@@ -20,30 +20,38 @@ struct CovidSummaryView: View {
     
     var body: some View {
         GeometryReader { geo in
-            HStack {
+            HStack(alignment: .top, spacing: 0) {
                 Spacer()
-            VStack(alignment: .trailing) {
-                Text("New Covid Cases")
-                    .font(.title2)
-                    .minimumScaleFactor(0.5)
-                    .lineLimit(1)
-                    .foregroundColor(.init("AccentContrastColor"))
-                    .brightness(0.2)
-                    .opacity(0.8)
-                Text(summaryVM.caseCount)
-                    .font(.system(size: 144, weight: .light, design: .rounded))
-                    .minimumScaleFactor(0.3)
-                    .lineLimit(1)
-                    .foregroundColor(.init("AccentContrastColor"))
-                    .brightness(0.25)
-                    .opacity(0.9)
-                Text("as of " + summaryVM.lastUpdated)
-                    .font(.callout)
-                    .textCase(.uppercase)
-                    .foregroundColor(.init("AccentContrastColor"))
-                    .brightness(0.2)
-                    .opacity(0.8)
-            }
+                VStack(alignment: .trailing) {
+                    Text("New Covid Cases")
+                        .font(.title2)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+                        .foregroundColor(.init("AccentContrastColor"))
+                        .brightness(0.2)
+                        .opacity(0.8)
+                    Text(summaryVM.caseCount)
+                        .font(.system(size: 144, weight: .light, design: .rounded))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.3)
+                        .foregroundColor(.init("AccentContrastColor"))
+                        .brightness(0.25)
+                        .opacity(0.9)
+                    Text("7 Day Average: " + summaryVM.average)
+                        .font(.callout)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+                        .foregroundColor(.init("AccentContrastColor"))
+                        .brightness(0.4)
+                    Text("as of " + summaryVM.lastUpdated)
+                        .font(.caption)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+                        .textCase(.uppercase)
+                        .foregroundColor(.init("AccentContrastColor"))
+                        .brightness(0.2)
+                        .opacity(0.8)
+                }
             }
             .foregroundColor(.white)
             .task {
