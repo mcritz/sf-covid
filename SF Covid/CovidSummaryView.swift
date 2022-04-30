@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CovidSummaryView: View {
     @ObservedObject var summaryVM: SummaryViewModel
+    @SceneStorage("ChartDays") private var days: Int = 60
     
     private func fontSize(for size: CGSize) -> CGFloat {
         if size.width > size.height {
@@ -56,7 +57,7 @@ struct CovidSummaryView: View {
             .foregroundColor(.white)
             .task {
                 do {
-                    try await summaryVM.update()
+                    try await summaryVM.update(days)
                 } catch {
                     print(error)
                 }
@@ -64,7 +65,7 @@ struct CovidSummaryView: View {
             .onTapGesture {
                 Task {
                     do {
-                        try await summaryVM.update()
+                        try await summaryVM.update(days)
                     } catch {
                         print(error)
                     }

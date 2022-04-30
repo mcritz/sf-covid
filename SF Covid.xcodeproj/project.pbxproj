@@ -29,6 +29,8 @@
 		0F2D0D5927BB374200CF903B /* CovidSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D0D5827BB374200CF903B /* CovidSummaryView.swift */; };
 		0F2D0D5A27BB375B00CF903B /* CovidSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2D0D5827BB374200CF903B /* CovidSummaryView.swift */; };
 		0F40DC4D27BB6EF80076366E /* UnsplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F40DC4C27BB6EF80076366E /* UnsplashService.swift */; };
+		0F4E8AB4281D98C80036CDAD /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4E8AB3281D98C80036CDAD /* Toolbar.swift */; };
+		0F4E8AB5281D98C80036CDAD /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4E8AB3281D98C80036CDAD /* Toolbar.swift */; };
 		0F93AB4827CD3A0C003A30A8 /* SF_Covid_MobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F93AB4727CD3A0C003A30A8 /* SF_Covid_MobileApp.swift */; };
 		0F93AB4F27CD3A0E003A30A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F93AB4E27CD3A0E003A30A8 /* Preview Assets.xcassets */; };
 		0F93AB5927CD3A0E003A30A8 /* SF_Covid_MobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F93AB5827CD3A0E003A30A8 /* SF_Covid_MobileTests.swift */; };
@@ -222,6 +224,7 @@
 		0F2D0D4D27BB35F900CF903B /* SF_Covid_Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SF_Covid_Widget.entitlements; sourceTree = "<group>"; };
 		0F2D0D5827BB374200CF903B /* CovidSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidSummaryView.swift; sourceTree = "<group>"; };
 		0F40DC4C27BB6EF80076366E /* UnsplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashService.swift; sourceTree = "<group>"; };
+		0F4E8AB3281D98C80036CDAD /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
 		0F93AB4527CD3A0C003A30A8 /* SF Covid Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SF Covid Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F93AB4727CD3A0C003A30A8 /* SF_Covid_MobileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SF_Covid_MobileApp.swift; sourceTree = "<group>"; };
 		0F93AB4E27CD3A0E003A30A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -401,6 +404,7 @@
 				0F40DC4C27BB6EF80076366E /* UnsplashService.swift */,
 				0FFBD92327C6BD470018E0F3 /* DateFormatter+Custom.swift */,
 				0F080EEA27F21B9F0015534B /* CovidChartView.swift */,
+				0F4E8AB3281D98C80036CDAD /* Toolbar.swift */,
 			);
 			path = "SF Covid";
 			sourceTree = "<group>";
@@ -994,6 +998,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F4E8AB4281D98C80036CDAD /* Toolbar.swift in Sources */,
 				0F2D0D1227BB2CAB00CF903B /* ContentView.swift in Sources */,
 				0F080EEB27F21B9F0015534B /* CovidChartView.swift in Sources */,
 				0F2D0D1027BB2CAB00CF903B /* SFCovidApp.swift in Sources */,
@@ -1040,6 +1045,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F4E8AB5281D98C80036CDAD /* Toolbar.swift in Sources */,
 				0F93AB4827CD3A0C003A30A8 /* SF_Covid_MobileApp.swift in Sources */,
 				0F080EED27F21B9F0015534B /* CovidChartView.swift in Sources */,
 				0F93AB6F27CD3A2D003A30A8 /* ContentView.swift in Sources */,
