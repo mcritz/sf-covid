@@ -41,7 +41,7 @@
 		0F93AB7527CD3C90003A30A8 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F93AB7427CD3C90003A30A8 /* SummaryView.swift */; };
 		0F93AB7827CD4442003A30A8 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 0F93AB7727CD4442003A30A8 /* Charts */; };
 		0F93AB7A27CD47BD003A30A8 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 0F93AB7927CD47BD003A30A8 /* Charts */; };
-		0FE8D71527CFE2E400CCFB7A /* SFCovidWatch WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 0FE8D71427CFE2E400CCFB7A /* SFCovidWatch WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0FE8D71527CFE2E400CCFB7A /* SF Covid.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 0FE8D71427CFE2E400CCFB7A /* SF Covid.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0FE8D71A27CFE2E600CCFB7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FE8D71927CFE2E600CCFB7A /* Assets.xcassets */; };
 		0FE8D72027CFE2E600CCFB7A /* SFCovidWatch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0FE8D71F27CFE2E600CCFB7A /* SFCovidWatch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0FE8D72527CFE2E600CCFB7A /* SF_CovidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE8D72427CFE2E600CCFB7A /* SF_CovidApp.swift */; };
@@ -181,7 +181,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				0FE8D71527CFE2E400CCFB7A /* SFCovidWatch WatchKit App.app in Embed Watch Content */,
+				0FE8D71527CFE2E400CCFB7A /* SF Covid.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,8 +232,8 @@
 		0F93AB6427CD3A0E003A30A8 /* SF_Covid_MobileUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SF_Covid_MobileUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0F93AB7327CD3B30003A30A8 /* SF-Covid-Mobile-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "SF-Covid-Mobile-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0F93AB7427CD3C90003A30A8 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
-		0FE8D71127CFE2E400CCFB7A /* SFCovidWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFCovidWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0FE8D71427CFE2E400CCFB7A /* SFCovidWatch WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SFCovidWatch WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FE8D71127CFE2E400CCFB7A /* SF Covid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SF Covid.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FE8D71427CFE2E400CCFB7A /* SF Covid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SF Covid.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FE8D71927CFE2E600CCFB7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0FE8D71F27CFE2E600CCFB7A /* SFCovidWatch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "SFCovidWatch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FE8D72427CFE2E600CCFB7A /* SF_CovidApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SF_CovidApp.swift; sourceTree = "<group>"; };
@@ -379,8 +379,8 @@
 				0F93AB5427CD3A0E003A30A8 /* SF Covid MobileTests.xctest */,
 				0F93AB5E27CD3A0E003A30A8 /* SF Covid MobileUITests.xctest */,
 				0FFFA38427CFDEC500AEF3AE /* SFCovidMobileWidgetExtension.appex */,
-				0FE8D71127CFE2E400CCFB7A /* SFCovidWatch.app */,
-				0FE8D71427CFE2E400CCFB7A /* SFCovidWatch WatchKit App.app */,
+				0FE8D71127CFE2E400CCFB7A /* SF Covid.app */,
+				0FE8D71427CFE2E400CCFB7A /* SF Covid.app */,
 				0FE8D71F27CFE2E600CCFB7A /* SFCovidWatch WatchKit Extension.appex */,
 				0FE8D73927CFE2E800CCFB7A /* SFCovidWatchTests.xctest */,
 				0FE8D74327CFE2E800CCFB7A /* SFCovidWatchUITests.xctest */,
@@ -699,7 +699,7 @@
 			);
 			name = SFCovidWatch;
 			productName = SFCovidWatch;
-			productReference = 0FE8D71127CFE2E400CCFB7A /* SFCovidWatch.app */;
+			productReference = 0FE8D71127CFE2E400CCFB7A /* SF Covid.app */;
 			productType = "com.apple.product-type.application.watchapp2-container";
 		};
 		0FE8D71327CFE2E400CCFB7A /* SFCovidWatch WatchKit App */ = {
@@ -716,7 +716,7 @@
 			);
 			name = "SFCovidWatch WatchKit App";
 			productName = "SFCovidWatch WatchKit App";
-			productReference = 0FE8D71427CFE2E400CCFB7A /* SFCovidWatch WatchKit App.app */;
+			productReference = 0FE8D71427CFE2E400CCFB7A /* SF Covid.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
 		0FE8D71E27CFE2E600CCFB7A /* SFCovidWatch WatchKit Extension */ = {
@@ -1492,6 +1492,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SF-Covid-Mobile-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "SF Covid";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1525,6 +1526,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SF-Covid-Mobile-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "SF Covid";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1641,8 +1643,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SFCovidWatch WatchKit Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "SFCovidWatch WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CFBundleDisplayName = "SF Covid";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = SFCovidWatch_WatchKit_Extension.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1673,8 +1675,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SFCovidWatch WatchKit Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "SFCovidWatch WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CFBundleDisplayName = "SF Covid";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = SFCovidWatch_WatchKit_Extension.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1706,11 +1708,10 @@
 				DEVELOPMENT_TEAM = FS69ZZRN45;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = SFCovidWatch_WatchKit_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = "SFCovidWatch WatchKit App";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = science.pixel.SFCovidWatch.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "SF Covid";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1731,11 +1732,10 @@
 				DEVELOPMENT_TEAM = FS69ZZRN45;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = SFCovidWatch_WatchKit_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = "SFCovidWatch WatchKit App";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = science.pixel.SFCovidWatch.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "SF Covid";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1754,7 +1754,7 @@
 				DEVELOPMENT_TEAM = FS69ZZRN45;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = science.pixel.SFCovidWatch;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "SF Covid";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1768,7 +1768,7 @@
 				DEVELOPMENT_TEAM = FS69ZZRN45;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = science.pixel.SFCovidWatch;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "SF Covid";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;

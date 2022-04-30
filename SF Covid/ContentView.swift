@@ -21,9 +21,11 @@ struct ContentView: View {
                     VStack(spacing: 4) {
                         CovidChartView()
                             .environmentObject(summaryVM)
+#if !os(watchOS)
                         Rectangle()
                             .fill(Color.black.opacity(0.1))
                             .frame(height: 60)
+#endif
                     }
                         .padding(.top, 20)
                         .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
@@ -36,6 +38,7 @@ struct ContentView: View {
                                            endPoint: .bottom)
                                 .ignoresSafeArea()
                         }
+#if !os(watchOS)
                         VStack {
                             Spacer()
                             HStack {
@@ -73,7 +76,8 @@ struct ContentView: View {
                             }
                             .tint(.accentColor)
                         }
-                        .ignoresSafeArea(.all)
+                        .ignoresSafeArea(.all, edges: [.leading, .top, .trailing])
+#endif // !watchOS
                     }
         }
     }
