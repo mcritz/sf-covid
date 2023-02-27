@@ -3,31 +3,51 @@ import Foundation
 protocol SummaryViewRepresentable: ObservableObject {
     var caseCount: String { get }
     var lastUpdated: String { get }
-    func update(_ days: Int) async throws
+    func update(_ days: Int?) async throws
 }
 
+#if DEBUG
 final class PlaceHolderSummary: SummaryViewRepresentable {
     var caseCount = "\(Int.random(in: 1...10_000).formatted())"
     var lastUpdated = Date.now.formatted(.dateTime)
-    func update(_ days: Int) async throws {
+    func update(_ days: Int?) async throws {
         caseCount = "\(Int.random(in: 1...10_000).formatted())"
         lastUpdated = Date.now.formatted(.dateTime)
     }
 }
+#endif
 
 final class SummaryViewModel: SummaryViewRepresentable {
     @Published var caseCount: String
     @Published var average: String
     @Published var lastUpdated: String
     @Published var chartValues: [Double] = []
+    @Published var chartAvaerageValues: [Double] = []
+    @Published var days: Int = 60
     private let covidData: CovidData
+    private enum Constants: String {
+        case ChartDays = "ChartDays"
+    }
     
     enum Errors: Error {
         case dataError(reason: String)
     }
     
+    private func getSavedDays() -> Int {
+        let savedDays = UserDefaults.standard.integer(forKey: Constants.ChartDays.rawValue)
+        guard savedDays > 0 else {
+            return 60
+        }
+        return savedDays
+    }
+    
     @MainActor
-    func update(_ days: Int = 60) async throws {
+    func update(_ userDays: Int? = nil) async throws {
+        let days = userDays ?? getSavedDays()
+        
+        Task.detached(priority: .low) {
+            UserDefaults.standard.setValue(days, forKey: Constants.ChartDays.rawValue)
+        }
         let entries = try await covidData.update()
         let oneWeekAgoIndex = entries.count - 7
         let lastSeven = Array(entries[oneWeekAgoIndex...])
@@ -61,8 +81,13 @@ final class SummaryViewModel: SummaryViewRepresentable {
         self.caseCount = ""
         self.lastUpdated = "Updating…"
         self.average = ""
+        let savedDays = UserDefaults.standard.integer(forKey: Constants.ChartDays.rawValue)
+        guard savedDays > 0 else {
+            return
+        }
+        self.days = savedDays
         Task {
-            try await update()
+            try await update(days)
         }
     }
 }
@@ -139,9 +164,7 @@ final class CovidData: ObservableObject {
         do {
             // Load from the network
             let res = try await URLSession.shared.data(for: request, delegate: nil)
-            Task(priority: .low) {
-                try await save(res.0)
-            }
+            try await save(res.0)
             someEntries = try decoder.decode([CovidEntry].self, from: res.0)
         } catch {
             // If network fails, try the local storage

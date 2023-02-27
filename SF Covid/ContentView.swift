@@ -2,7 +2,7 @@ import Charts
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject private var summaryVM = SummaryViewModel()
+    @StateObject private var summaryVM = SummaryViewModel()
     var body: some View {
         HStack {
             Spacer()
@@ -28,8 +28,7 @@ struct ContentView: View {
                         .ignoresSafeArea()
                     }
 #if !os(watchOS)
-                Toolbar()
-                    .environmentObject(summaryVM)
+                Toolbar(summaryVM)
 #endif // !watchOS
             }
         }

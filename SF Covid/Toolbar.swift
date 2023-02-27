@@ -9,9 +9,14 @@ import SwiftUI
 
 struct Toolbar: View {
     @Environment(\.openURL) private var openURL
-    @EnvironmentObject private var summaryVM: SummaryViewModel
+    @ObservedObject private var summaryVM: SummaryViewModel
     private let sfCovidDataURL = URL(string: "https://sf.gov/data/covid-19-cases-and-deaths")!
-    @SceneStorage("ChartDays") public var days: Int = 60
+    @SceneStorage("ChartDays") private var selectedDays: Int = 60
+    
+    init(_ svm: SummaryViewModel) {
+        self.summaryVM = svm
+        self.selectedDays = svm.days
+    }
     
     var body: some View {
         VStack {
@@ -30,7 +35,7 @@ struct Toolbar: View {
                 .padding(.vertical, 15)
                 .padding(.leading, 10)
                 Spacer()
-                Picker("", selection: $days) {
+                Picker("", selection: $selectedDays) {
                     Text("365")
                         .tag(365)
                     Text("60")
@@ -43,9 +48,9 @@ struct Toolbar: View {
                 .accentColor(Color("Secondary"))
                 .pickerStyle(SegmentedPickerStyle())
                 .padding()
-                .onChange(of: days) { newValue in
+                .onChange(of: selectedDays) { newValue in
                     Task {
-                        try? await summaryVM.update(days)
+                        try? await summaryVM.update(newValue)
                     }
                 }
             }
@@ -56,6 +61,6 @@ struct Toolbar: View {
 
 struct Toolbar_Previews: PreviewProvider {
     static var previews: some View {
-        Toolbar()
+        Toolbar(SummaryViewModel())
     }
 }
