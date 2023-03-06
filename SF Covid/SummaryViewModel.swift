@@ -159,7 +159,7 @@ final class CovidData: ObservableObject {
     @discardableResult
     func update() async throws -> [CovidEntry] {
         var someEntries = [CovidEntry]()
-        let url = URL(string: "https://data.sfgov.org/resource/gyr2-k29z.json")!
+        let url = URL(string: "https://data.sfgov.org/resource/gyr2-k29z.json?$limit=3000")!
         let request = URLRequest(url: url)
         do {
             // Load from the network
