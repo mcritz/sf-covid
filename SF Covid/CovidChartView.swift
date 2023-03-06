@@ -15,6 +15,8 @@ struct CovidChartView: View {
                                    startPoint: .top,
                                    endPoint: .bottom)
                                   ))
+            .opacity(summaryVM.status == .ready ? 1.0 : 0.0)
+            .scaleEffect(x: 1.0, y: summaryVM.status == .ready ? 1.0 : 0.0, anchor: .bottom)
     }
 }
 

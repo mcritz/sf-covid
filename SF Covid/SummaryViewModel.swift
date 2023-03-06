@@ -1,9 +1,17 @@
 import Foundation
 import SwiftUI
 
+enum Status {
+    case pristine
+    case loading
+    case ready
+    case error
+}
+
 protocol SummaryViewRepresentable: ObservableObject {
     var caseCount: String { get }
     var lastUpdated: String { get }
+    var status: Status { get }
     func update(_ days: Int?) async throws
 }
 
@@ -11,6 +19,7 @@ protocol SummaryViewRepresentable: ObservableObject {
 final class PlaceHolderSummary: SummaryViewRepresentable {
     var caseCount = "\(Int.random(in: 1...10_000).formatted())"
     var lastUpdated = Date.now.formatted(.dateTime)
+    var status: Status = .ready
     func update(_ days: Int?) async throws {
         caseCount = "\(Int.random(in: 1...10_000).formatted())"
         lastUpdated = Date.now.formatted(.dateTime)
@@ -19,6 +28,7 @@ final class PlaceHolderSummary: SummaryViewRepresentable {
 #endif
 
 final class SummaryViewModel: SummaryViewRepresentable {
+    @Published var status: Status = .pristine
     @Published var caseCount: String
     @Published var average: String
     @Published var lastUpdated: String
@@ -45,6 +55,9 @@ final class SummaryViewModel: SummaryViewRepresentable {
     
     @MainActor
     func update(_ userDays: Int? = nil) async throws {
+        withAnimation(.spring()) {
+            status = .loading
+        }
         let days = userDays ?? getSavedDays()
         
         Task.detached(priority: .low) {
@@ -62,6 +75,7 @@ final class SummaryViewModel: SummaryViewRepresentable {
                 self.lastUpdated = reason
             case .failure(.noDirectory):
                 self.lastUpdated = "Error"
+                self.status = .error
                 return
             }
             // Get a seven day average
@@ -80,10 +94,12 @@ final class SummaryViewModel: SummaryViewRepresentable {
             }
             let stepAlongTheWay = Array(entries.dropFirst(numberToTrim))
             let normals = await covidData.normalize(stepAlongTheWay)
-            withAnimation {
+            withAnimation(.spring()) {
+                self.status = .ready
                 self.chartValues = normals
             }
         } catch {
+            self.status = .error
             self.lastUpdated = "Error: \(error.localizedDescription)"
             throw Errors.networkError(reason: error.localizedDescription)
         }
