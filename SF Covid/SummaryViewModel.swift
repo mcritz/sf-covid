@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 protocol SummaryViewRepresentable: ObservableObject {
     var caseCount: String { get }
@@ -31,6 +32,7 @@ final class SummaryViewModel: SummaryViewRepresentable {
     
     enum Errors: Error {
         case dataError(reason: String)
+        case networkError(reason: String)
     }
     
     private func getSavedDays() -> Int {
@@ -48,24 +50,43 @@ final class SummaryViewModel: SummaryViewRepresentable {
         Task.detached(priority: .low) {
             UserDefaults.standard.setValue(days, forKey: Constants.ChartDays.rawValue)
         }
-        let entries = try await covidData.update()
-        let oneWeekAgoIndex = entries.count - 7
-        let lastSeven = Array(entries[oneWeekAgoIndex...])
-        self.average = String(average(lastSeven))
-        self.caseCount = entries.last?.new_cases ?? "Error"
-        self.lastUpdated = entries.last?.data_as_of?.formatted() ?? "Error"
-        let numberToTrim = entries.count - days // days to display
-        guard numberToTrim > 0,
-              numberToTrim < entries.count else {
-            throw Errors.dataError(reason: "Cannot drop more days than values exist")
+        
+        do {
+            let updateResult = try await covidData.update()
+            let entries: [CovidEntry]!
+            switch updateResult {
+            case .success(let networkEntries):
+                entries = networkEntries
+            case .failure(.networkError(reason: let reason, entries: let savedEntries)):
+                entries = savedEntries
+                self.lastUpdated = reason
+            case .failure(.noDirectory):
+                self.lastUpdated = "Error"
+                return
+            }
+            // Get a seven day average
+            let oneWeekAgoIndex = entries.count - 7
+            let lastSeven = Array(entries[oneWeekAgoIndex...])
+            self.average = String(average(lastSeven))
+            
+            self.caseCount = entries.last?.new_cases ?? "Error"
+            self.lastUpdated = entries.last?.data_as_of?.formatted() ?? "Error"
+            
+            
+            let numberToTrim = entries.count - days // days to display
+            guard numberToTrim > 0,
+                  numberToTrim < entries.count else {
+                throw Errors.dataError(reason: "Cannot drop more days than values exist")
+            }
+            let stepAlongTheWay = Array(entries.dropFirst(numberToTrim))
+            let normals = await covidData.normalize(stepAlongTheWay)
+            withAnimation {
+                self.chartValues = normals
+            }
+        } catch {
+            self.lastUpdated = "Error: \(error.localizedDescription)"
+            throw Errors.networkError(reason: error.localizedDescription)
         }
-        let stepAlongTheWay = entries
-            .dropFirst(numberToTrim)
-            .filter { _ in
-                true
-        }
-        let normals = covidData.normalize(stepAlongTheWay)
-        self.chartValues = normals
     }
     
     private func average(_ entries: [CovidEntry]) -> Int {
@@ -93,7 +114,7 @@ final class SummaryViewModel: SummaryViewRepresentable {
 }
 
 
-final class CovidData: ObservableObject {
+actor CovidData: ObservableObject {
     @Published var entries = [CovidEntry]() {
         didSet {
             chartNormalizedValues = normalize(entries)
@@ -104,6 +125,7 @@ final class CovidData: ObservableObject {
     
     enum Errors: Error {
         case noDirectory
+        case networkError(reason: String, entries: [CovidEntry])
     }
     
     enum Constants: String {
@@ -119,11 +141,15 @@ final class CovidData: ObservableObject {
         }
     }
     
+    /// This method transforms values to be usable by `Charts` library by mapping  `[CovidEntry]` to values in range `0...1`
+    /// Example: Case counts like `[1, 10, 100]` will map to `[0.01, 0.1, 1.0]`
+    /// - Parameter entries: `[CovidEntry]`
+    /// - Returns: `[Double]`
     public func normalize(_ entries: [CovidEntry]) -> [Double] {
         let justCases = entries.map { entry in
             Double(entry.new_cases)
         }
-        let highest = justCases.reduce(into: 0.0) { partialResult, next in
+        let largestValue = justCases.reduce(into: 0.0) { partialResult, next in
             guard let next = next,
                   next > partialResult else {
                 return
@@ -131,8 +157,8 @@ final class CovidData: ObservableObject {
             partialResult = next
         }
         // 1, 2, 3
-        let scaleFactor = highest == 0 ? 1 : highest
         // scaleFactor = 3
+        let scaleFactor = largestValue == 0 ? 1 : largestValue
         let normalizedValues = justCases.map { value in
             (value ?? 0) / scaleFactor // 1/3, 2/3, 1.0
         }
@@ -157,28 +183,35 @@ final class CovidData: ObservableObject {
     }
     
     @discardableResult
-    func update() async throws -> [CovidEntry] {
+    public func update() async throws -> Result<[CovidEntry], Errors> {
         var someEntries = [CovidEntry]()
         let url = URL(string: "https://data.sfgov.org/resource/gyr2-k29z.json?$limit=3000")!
-        let request = URLRequest(url: url)
         do {
             // Load from the network
-            let res = try await URLSession.shared.data(for: request, delegate: nil)
-            try await save(res.0)
-            someEntries = try decoder.decode([CovidEntry].self, from: res.0)
+            let res = try Data(contentsOf: url)
+            try await save(res)
+            someEntries = try decoder.decode([CovidEntry].self, from: res)
         } catch {
             // If network fails, try the local storage
             let data = try load()
             someEntries = try decoder.decode([CovidEntry].self, from: data)
+            someEntries = sort(someEntries)
+            self.chartNormalizedValues = normalize(someEntries)
+            return .failure(.networkError(reason: "Network error", entries: someEntries))
         }
-        let sortedEntries = someEntries.sorted(by: { alpha, brava in
+        let sortedEntries = sort(someEntries)
+        self.chartNormalizedValues = normalize(sortedEntries)
+        return .success(sortedEntries)
+    }
+    
+    private func sort(_ entries: [CovidEntry]) -> [CovidEntry] {
+        let sortedEntries = entries.sorted(by: { alpha, brava in
             guard let apple = alpha.specimen_collection_date,
                   let banana = brava.specimen_collection_date else {
                 return false
             }
             return apple < banana
         })
-        self.chartNormalizedValues = normalize(sortedEntries)
         return sortedEntries
     }
 }

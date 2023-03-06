@@ -44,7 +44,7 @@ struct CovidSummaryView: View {
                         .minimumScaleFactor(0.5)
                         .foregroundColor(.init("AccentContrastColor"))
                         .brightness(0.4)
-                    Text("as of " + summaryVM.lastUpdated)
+                    Text(summaryVM.lastUpdated)
                         .font(.caption)
                         .lineLimit(1)
                         .minimumScaleFactor(0.5)
