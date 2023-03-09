@@ -1,10 +1,3 @@
-//
-//  Toolbar.swift
-//  SF Covid
-//
-//  Created by Michael Critz on 4/30/22.
-//
-
 import SwiftUI
 
 struct Toolbar: View {

@@ -29,7 +29,7 @@ struct ContentView: View {
                     }
 #if !os(watchOS)
                 Toolbar(summaryVM)
-#endif // !watchOS
+#endif
             }
         }
     }
