@@ -15,6 +15,7 @@ struct Toolbar: View {
         VStack {
             Spacer()
             HStack {
+                Spacer()
                 Button(action: {
                     openURL(sfCovidDataURL) { accepted in
                         print("Tapped URL", accepted)
@@ -26,8 +27,7 @@ struct Toolbar: View {
                     }
                 })
                 .padding(.vertical, 15)
-                .padding(.leading, 10)
-                Spacer()
+                .padding(.horizontal, 10)
                 Picker("", selection: $selectedDays) {
                     Text("365")
                         .tag(365)
@@ -40,6 +40,7 @@ struct Toolbar: View {
                 }
                 .accentColor(Color("Secondary"))
                 .pickerStyle(SegmentedPickerStyle())
+                .frame(maxWidth: 256)
                 .padding()
                 .onChange(of: selectedDays) { newValue in
                     Task {

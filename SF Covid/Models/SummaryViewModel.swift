@@ -27,6 +27,31 @@ final class SummaryViewModel: SummaryViewRepresentable {
         return savedDays
     }
     
+    private func rollingAverage(_ source: [CovidEntry]) -> [Double] {
+        var rollingAverage = [Double]()
+        var averages = [Int]()
+        for entry in source {
+            guard let value = Int(entry.new_cases) else {
+                continue
+            }
+            if averages.count > 6 {
+                averages.removeFirst()
+            }
+            averages.append(value)
+            let thisAverage = average(numbers: averages)
+            rollingAverage.append(thisAverage)
+        }
+        return rollingAverage
+    }
+    
+    func average(numbers: [Int]) -> Double {
+        let sum = numbers.reduce(into: 0) { partialResult, thisInt in
+            partialResult += thisInt
+        }
+        return Double(sum) / Double(numbers.count)
+    }
+
+    
     @MainActor
     func update(_ userDays: Int? = nil) async throws {
         withAnimation(.spring()) {
@@ -67,10 +92,13 @@ final class SummaryViewModel: SummaryViewRepresentable {
                 throw Errors.dataError(reason: "Cannot drop more days than values exist")
             }
             let stepAlongTheWay = Array(entries.dropFirst(numberToTrim))
+            let rollingAverages = rollingAverage(stepAlongTheWay)
             let normals = await covidData.normalize(stepAlongTheWay)
+            let normalizedRollingAverages = await covidData.normalize(rollingAverages)
             withAnimation(.spring()) {
                 self.status = .ready
                 self.chartValues = normals
+                self.chartAvaerageValues = normalizedRollingAverages
             }
         } catch {
             self.status = .error
@@ -102,6 +130,3 @@ final class SummaryViewModel: SummaryViewRepresentable {
         }
     }
 }
-
-
-

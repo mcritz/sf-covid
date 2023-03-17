@@ -10,6 +10,7 @@ import SwiftUI
 struct CovidSummaryView: View {
     @ObservedObject var summaryVM: SummaryViewModel
     @SceneStorage("ChartDays") private var days: Int = 60
+    @State private var showOptions: Bool = false
     
     private func fontSize(for size: CGSize) -> CGFloat {
         if size.width > size.height {
@@ -24,7 +25,7 @@ struct CovidSummaryView: View {
             HStack(alignment: .top, spacing: 0) {
                 Spacer()
                 VStack(alignment: .trailing) {
-                    Text("New Covid Cases")
+                    Text(summaryVM.status == .ready ? "New Covid Cases" : summaryVM.status.description)
                         .font(.title2)
                         .lineLimit(1)
                         .minimumScaleFactor(0.5)
@@ -63,6 +64,7 @@ struct CovidSummaryView: View {
                 }
             }
             .onTapGesture {
+                showOptions = true
                 Task {
                     do {
                         try await summaryVM.update(days)
@@ -71,8 +73,31 @@ struct CovidSummaryView: View {
                     }
                 }
             }
+            #if os(watchOS)
+            .sheet(isPresented: $showOptions) {
+                showOptions = false
+            } content: {
+                VStack {
+                    Picker("Days", selection: $summaryVM.days) {
+                        ForEach([14, 30, 60, 365], id: \.self) { daysOption in
+                            Text("\(daysOption)")
+                                .tag(daysOption)
+                        }
+                    }
+                    .pickerStyle(InlinePickerStyle())
+                    .onChange(of: summaryVM.days) { newDays in
+                        days = newDays
+                    }
+                    Button("Done") {
+                        showOptions = false
+                        Task {
+                            try await summaryVM.update(days)
+                        }
+                    }
+                }
+            }
+            #endif
         }
-        .frame(width: nil)
     }
 }
 

@@ -242,6 +242,9 @@
 		0F02670629BA4FB5007E5221 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F02670929BA4FB6007E5221 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0F080EEA27F21B9F0015534B /* CovidChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidChartView.swift; sourceTree = "<group>"; };
+		0F10133D29BA858300E87A44 /* SFCovidWatch WatchKit App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SFCovidWatch WatchKit App.entitlements"; sourceTree = "<group>"; };
+		0F10133E29BA859E00E87A44 /* SF Covid Mobile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SF Covid Mobile.entitlements"; sourceTree = "<group>"; };
+		0F10133F29BA870600E87A44 /* SFCovidWatch-WatchKit-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "SFCovidWatch-WatchKit-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0F2D0D0C27BB2CAB00CF903B /* SF Covid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SF Covid.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F2D0D0F27BB2CAB00CF903B /* SFCovidApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFCovidApp.swift; sourceTree = "<group>"; };
 		0F2D0D1127BB2CAB00CF903B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -552,6 +555,7 @@
 		0F93AB4627CD3A0C003A30A8 /* SF Covid Mobile */ = {
 			isa = PBXGroup;
 			children = (
+				0F10133E29BA859E00E87A44 /* SF Covid Mobile.entitlements */,
 				0F93AB7327CD3B30003A30A8 /* SF-Covid-Mobile-Info.plist */,
 				0F93AB4727CD3A0C003A30A8 /* SF_Covid_MobileApp.swift */,
 				0FFFA37E27CFDA4A00AEF3AE /* Assets.xcassets */,
@@ -589,6 +593,8 @@
 		0FE8D71827CFE2E400CCFB7A /* SFCovidWatch WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
+				0F10133F29BA870600E87A44 /* SFCovidWatch-WatchKit-App-Info.plist */,
+				0F10133D29BA858300E87A44 /* SFCovidWatch WatchKit App.entitlements */,
 				0FE8D71927CFE2E600CCFB7A /* Assets.xcassets */,
 			);
 			path = "SFCovidWatch WatchKit App";
@@ -1516,6 +1522,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "SF Covid/SF_Covid.entitlements";
 				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1548,6 +1555,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "SF Covid/SF_Covid.entitlements";
 				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1710,6 +1718,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SF Covid Mobile/SF Covid Mobile.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SF Covid Mobile/Preview Content\"";
@@ -1745,6 +1754,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SF Covid Mobile/SF Covid Mobile.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SF Covid Mobile/Preview Content\"";
@@ -1930,11 +1940,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SFCovidWatch WatchKit App/SFCovidWatch WatchKit App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FS69ZZRN45;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = SFCovidWatch_WatchKit_Extension;
+				INFOPLIST_FILE = "SFCovidWatch-WatchKit-App-Info.plist";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = science.pixel.SFCovidWatch.watchkitapp;
@@ -1954,11 +1966,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SFCovidWatch WatchKit App/SFCovidWatch WatchKit App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FS69ZZRN45;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = SFCovidWatch_WatchKit_Extension;
+				INFOPLIST_FILE = "SFCovidWatch-WatchKit-App-Info.plist";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = science.pixel.SFCovidWatch.watchkitapp;

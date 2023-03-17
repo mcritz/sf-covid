@@ -7,6 +7,7 @@ actor CovidData: ObservableObject {
         }
     }
     @Published var chartNormalizedValues: [Double] = []
+    private var scaleFactor: Double = 1.0
     private let decoder: JSONDecoder
     
     enum Errors: Error {
@@ -34,15 +35,20 @@ actor CovidData: ObservableObject {
         let url = URL(string: Constants.apiURL.rawValue)!
         do {
             // Load from the network
+//            var request = URLRequest(url: url)
+//            request.cachePolicy = .reloadRevalidatingCacheData
             let res = try Data(contentsOf: url)
+//            let (url, res) = try await URLSession.shared.download(for: request)
             try await save(res)
             someEntries = try decoder.decode([CovidEntry].self, from: res)
         } catch {
+            print("xxx \(error)")
             // If network fails, try the local storage
-            let data = try load()
-            someEntries = try decoder.decode([CovidEntry].self, from: data)
-            someEntries = sort(someEntries)
-            self.chartNormalizedValues = normalize(someEntries)
+            if let data = try? load() {
+                someEntries = try decoder.decode([CovidEntry].self, from: data)
+                someEntries = sort(someEntries)
+                self.chartNormalizedValues = normalize(someEntries)
+            }
             return .failure(.networkError(reason: "Network error", entries: someEntries))
         }
         let sortedEntries = sort(someEntries)
@@ -56,21 +62,26 @@ actor CovidData: ObservableObject {
     /// - Returns: `[Double]`
     public func normalize(_ entries: [CovidEntry]) -> [Double] {
         let justCases = entries.map { entry in
-            Double(entry.new_cases)
+            Double(entry.new_cases) ?? 0.0
         }
-        
-        let largestValue = justCases.reduce(into: 0.0) { partialResult, next in
-            guard let next = next,
-                  next > partialResult else {
+        scaleFactor = getScaleFactor(justCases)
+        return normalize(justCases)
+    }
+    
+    private func getScaleFactor(_ numbers: [Double]) -> Double {
+        let largestValue = numbers.reduce(into: 0.0) { partialResult, next in
+            guard next > partialResult else {
                 return
             }
             partialResult = next
         }
-        // 1, 2, 3
-        // scaleFactor = 3
         let scaleFactor = largestValue == 0 ? 1 : largestValue
-        let normalizedValues = justCases.map { value in
-            (value ?? 0) / scaleFactor // 1/3, 2/3, 1.0
+        return scaleFactor
+    }
+    
+    public func normalize(_ numbers: [Double]) -> [Double] {
+        let normalizedValues = numbers.map { value in
+            value / scaleFactor // 1/3, 2/3, 1.0
         }
         return normalizedValues
     }
@@ -80,6 +91,9 @@ actor CovidData: ObservableObject {
             throw Errors.noDirectory
         }
         let sourceURL = directory.appendingPathComponent(fileName)
+        if !FileManager.default.isReadableFile(atPath: sourceURL.path) {
+            FileManager.default.createFile(atPath: sourceURL.path, contents: nil)
+        }
         let data = try Data(contentsOf: sourceURL)
         return data
     }
