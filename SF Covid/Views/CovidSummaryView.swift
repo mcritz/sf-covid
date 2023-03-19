@@ -63,6 +63,7 @@ struct CovidSummaryView: View {
                     print(error)
                 }
             }
+            #if !os(tvOS)
             .onTapGesture {
                 showOptions = true
                 Task {
@@ -73,6 +74,7 @@ struct CovidSummaryView: View {
                     }
                 }
             }
+            #endif
             #if os(watchOS)
             .sheet(isPresented: $showOptions) {
                 showOptions = false
