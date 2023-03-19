@@ -15,11 +15,6 @@ actor CovidData: ObservableObject {
         case networkError(reason: String, entries: [CovidEntry])
     }
     
-    enum Constants: String {
-        case dataFileName = "data.json"
-        case apiURL = "https://data.sfgov.org/resource/gyr2-k29z.json?$limit=3000"
-    }
-    
     init() {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(.customSFData)

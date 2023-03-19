@@ -3,7 +3,7 @@ import SwiftUI
 struct Toolbar: View {
     @Environment(\.openURL) private var openURL
     @ObservedObject private var summaryVM: SummaryViewModel
-    private let sfCovidDataURL = URL(string: "https://sf.gov/data/covid-19-cases-and-deaths")!
+    private let sfCovidDataURL = URL(string: Constants.sfGovSite.rawValue)!
     @SceneStorage("ChartDays") private var selectedDays: Int = 60
     
     init(_ svm: SummaryViewModel) {

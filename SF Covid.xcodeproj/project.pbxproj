@@ -75,6 +75,12 @@
 		0F39DBD929C6C6AF003EEE2F /* CovidData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0266DC29BA4CDB007E5221 /* CovidData.swift */; };
 		0F39DBDB29C6C708003EEE2F /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 0F39DBDA29C6C708003EEE2F /* Charts */; };
 		0F39DBDC29C6C8FF003EEE2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F2D0D1327BB2CAE00CF903B /* Assets.xcassets */; };
+		0F39DBE229C751B0003EEE2F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F39DBE129C751B0003EEE2F /* Constants.swift */; };
+		0F39DBE329C751E7003EEE2F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F39DBE129C751B0003EEE2F /* Constants.swift */; };
+		0F39DBE429C751E9003EEE2F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F39DBE129C751B0003EEE2F /* Constants.swift */; };
+		0F39DBE529C751EB003EEE2F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F39DBE129C751B0003EEE2F /* Constants.swift */; };
+		0F39DBE629C751EE003EEE2F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F39DBE129C751B0003EEE2F /* Constants.swift */; };
+		0F39DBE729C751F3003EEE2F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F39DBE129C751B0003EEE2F /* Constants.swift */; };
 		0F4E8AB4281D98C80036CDAD /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4E8AB3281D98C80036CDAD /* Toolbar.swift */; };
 		0F4E8AB5281D98C80036CDAD /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4E8AB3281D98C80036CDAD /* Toolbar.swift */; };
 		0F93AB4827CD3A0C003A30A8 /* SF_Covid_MobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F93AB4727CD3A0C003A30A8 /* SF_Covid_MobileApp.swift */; };
@@ -258,6 +264,7 @@
 		0F2D0D4C27BB35F900CF903B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F2D0D4D27BB35F900CF903B /* SF_Covid_Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SF_Covid_Widget.entitlements; sourceTree = "<group>"; };
 		0F2D0D5827BB374200CF903B /* CovidSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidSummaryView.swift; sourceTree = "<group>"; };
+		0F39DBE129C751B0003EEE2F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0F4E8AB3281D98C80036CDAD /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
 		0F93AB4527CD3A0C003A30A8 /* SF Covid Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SF Covid Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F93AB4727CD3A0C003A30A8 /* SF_Covid_MobileApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SF_Covid_MobileApp.swift; sourceTree = "<group>"; };
@@ -402,6 +409,7 @@
 				0F0266DE29BA4D11007E5221 /* Status.swift */,
 				0F0266E029BA4D2A007E5221 /* SummaryViewRepresentable.swift */,
 				0F0266E229BA4D5E007E5221 /* PlaceHolderSummary.swift */,
+				0F39DBE129C751B0003EEE2F /* Constants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1103,6 +1111,7 @@
 				0F39DBD329C6C6AA003EEE2F /* DateFormatter+Custom.swift in Sources */,
 				0F39DBD829C6C6AF003EEE2F /* CovidEntry.swift in Sources */,
 				0F39DBD429C6C6AF003EEE2F /* SummaryViewModel.swift in Sources */,
+				0F39DBE729C751F3003EEE2F /* Constants.swift in Sources */,
 				0F39DBD729C6C6AF003EEE2F /* PlaceHolderSummary.swift in Sources */,
 				0F39DBD629C6C6AF003EEE2F /* SummaryViewRepresentable.swift in Sources */,
 				0F39DBD929C6C6AF003EEE2F /* CovidData.swift in Sources */,
@@ -1126,6 +1135,7 @@
 				0F2D0D1027BB2CAB00CF903B /* SFCovidApp.swift in Sources */,
 				0FFBD92427C6BD470018E0F3 /* DateFormatter+Custom.swift in Sources */,
 				0F2D0D4F27BB35F900CF903B /* SF_Covid_Widget.intentdefinition in Sources */,
+				0F39DBE229C751B0003EEE2F /* Constants.swift in Sources */,
 				0F2D0D3B27BB2D2400CF903B /* SummaryViewModel.swift in Sources */,
 				0F2D0D5927BB374200CF903B /* CovidSummaryView.swift in Sources */,
 			);
@@ -1159,6 +1169,7 @@
 				0F0266D929BA4C58007E5221 /* Toolbar.swift in Sources */,
 				0F0266EA29BA4EBE007E5221 /* PlaceHolderSummary.swift in Sources */,
 				0F0266E629BA4EB0007E5221 /* SummaryViewModel.swift in Sources */,
+				0F39DBE429C751E9003EEE2F /* Constants.swift in Sources */,
 				0F2D0D5A27BB375B00CF903B /* CovidSummaryView.swift in Sources */,
 				0F0266E829BA4EBE007E5221 /* CovidEntry.swift in Sources */,
 				0F0266EB29BA4EBE007E5221 /* CovidData.swift in Sources */,
@@ -1176,6 +1187,7 @@
 				0F93AB4827CD3A0C003A30A8 /* SF_Covid_MobileApp.swift in Sources */,
 				0F0266E429BA4EA1007E5221 /* SummaryViewModel.swift in Sources */,
 				0F080EED27F21B9F0015534B /* CovidChartView.swift in Sources */,
+				0F39DBE329C751E7003EEE2F /* Constants.swift in Sources */,
 				0F93AB6F27CD3A2D003A30A8 /* ContentView.swift in Sources */,
 				0F0266ED29BA4EC0007E5221 /* CovidEntry.swift in Sources */,
 				0F93AB7027CD3A2D003A30A8 /* CovidSummaryView.swift in Sources */,
@@ -1214,6 +1226,7 @@
 				0FE8D75D27CFE35600CCFB7A /* ContentView.swift in Sources */,
 				0F080EEF27F21B9F0015534B /* CovidChartView.swift in Sources */,
 				0FE8D75F27CFE40700CCFB7A /* DateFormatter+Custom.swift in Sources */,
+				0F39DBE629C751EE003EEE2F /* Constants.swift in Sources */,
 				0F0266FA29BA4EC5007E5221 /* CovidData.swift in Sources */,
 				0F0266F729BA4EC5007E5221 /* CovidEntry.swift in Sources */,
 				0FE8D72D27CFE2E600CCFB7A /* ComplicationController.swift in Sources */,
@@ -1254,6 +1267,7 @@
 				0FFFA39D27CFDF7900AEF3AE /* DateFormatter+Custom.swift in Sources */,
 				0F0266F529BA4EC3007E5221 /* CovidData.swift in Sources */,
 				0F0266F329BA4EC3007E5221 /* Status.swift in Sources */,
+				0F39DBE529C751EB003EEE2F /* Constants.swift in Sources */,
 				0F0266F429BA4EC3007E5221 /* PlaceHolderSummary.swift in Sources */,
 				0F0266DB29BA4C58007E5221 /* Toolbar.swift in Sources */,
 				0FFFA39B27CFDF4D00AEF3AE /* CovidSummaryView.swift in Sources */,
@@ -1867,7 +1881,7 @@
 				DEVELOPMENT_TEAM = FS69ZZRN45;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SFCovidWatch-WatchKit-App-Info.plist";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = SF_Gov_Data.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
@@ -1876,7 +1890,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = science.pixel.SFCovidWatch.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "science.pixel.SF-Covid-Mobile.watch-app";
 				PRODUCT_NAME = "SF Gov Data";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1900,7 +1914,7 @@
 				DEVELOPMENT_TEAM = FS69ZZRN45;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SFCovidWatch-WatchKit-App-Info.plist";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = SF_Gov_Data.ComplicationController;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
@@ -1909,7 +1923,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = science.pixel.SFCovidWatch.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "science.pixel.SF-Covid-Mobile.watch-app";
 				PRODUCT_NAME = "SF Gov Data";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1928,7 +1942,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FS69ZZRN45;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = science.pixel.SFCovidWatch;
+				PRODUCT_BUNDLE_IDENTIFIER = "science.pixel.SF-Covid-Mobile.watch";
 				PRODUCT_NAME = "SF Covid";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -1942,7 +1956,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FS69ZZRN45;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = science.pixel.SFCovidWatch;
+				PRODUCT_BUNDLE_IDENTIFIER = "science.pixel.SF-Covid-Mobile.watch";
 				PRODUCT_NAME = "SF Covid";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
