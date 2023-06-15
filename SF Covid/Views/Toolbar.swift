@@ -46,7 +46,7 @@ struct Toolbar: View {
                 .padding()
                 .onChange(of: selectedDays) { newValue in
                     Task {
-                        try? await summaryVM.update(newValue)
+                        try? await summaryVM.update(newValue, type: .covidHospitalizations)
                     }
                 }
             }

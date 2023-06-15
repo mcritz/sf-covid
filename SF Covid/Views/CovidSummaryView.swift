@@ -58,7 +58,7 @@ struct CovidSummaryView: View {
             .foregroundColor(.white)
             .task {
                 do {
-                    try await summaryVM.update(days)
+                    try await summaryVM.update(days, type: .covidHospitalizations)
                 } catch {
                     print(error)
                 }
@@ -68,7 +68,7 @@ struct CovidSummaryView: View {
                 showOptions = true
                 Task {
                     do {
-                        try await summaryVM.update(days)
+                        try await summaryVM.update(days, type: .covidHospitalizations)
                     } catch {
                         print(error)
                     }

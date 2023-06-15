@@ -12,7 +12,7 @@ actor CovidData: ObservableObject {
     
     enum Errors: Error {
         case noDirectory
-        case networkError(reason: String, entries: [CovidEntry])
+        case networkError(reason: String, entries: [Chartable])
     }
     
     init() {
@@ -20,14 +20,14 @@ actor CovidData: ObservableObject {
         decoder.dateDecodingStrategy = .formatted(.customSFData)
         self.decoder = decoder
         Task {
-            try? await update()
+            try? await update(CovidEntry.self)
         }
     }
     
     @discardableResult
-    public func update() async throws -> Result<[CovidEntry], Errors> {
-        var someEntries = [CovidEntry]()
-        let url = URL(string: Constants.apiURL.rawValue)!
+    public func update<T: Chartable>(_ type: T.Type) async throws -> Result<[T], Errors> {
+        var someEntries = [T]()
+        let url = T.self == CovidHospitalization.self ? URL(string: Constants.hospitalizationsURL.rawValue)! : URL(string: Constants.casesURL.rawValue)!
         do {
             // Load from the network
 //            var request = URLRequest(url: url)
@@ -35,12 +35,12 @@ actor CovidData: ObservableObject {
             let res = try Data(contentsOf: url)
 //            let (url, res) = try await URLSession.shared.download(for: request)
             try await save(res)
-            someEntries = try decoder.decode([CovidEntry].self, from: res)
+            someEntries = try decoder.decode([T].self, from: res)
         } catch {
             print("xxx \(error)")
             // If network fails, try the local storage
             if let data = try? load() {
-                someEntries = try decoder.decode([CovidEntry].self, from: data)
+                someEntries = try decoder.decode([T].self, from: data)
                 someEntries = sort(someEntries)
                 self.chartNormalizedValues = normalize(someEntries)
             }
@@ -55,9 +55,9 @@ actor CovidData: ObservableObject {
     /// Example: Case counts like `[1, 10, 100]` will map to `[0.01, 0.1, 1.0]`
     /// - Parameter entries: `[CovidEntry]`
     /// - Returns: `[Double]`
-    public func normalize(_ entries: [CovidEntry]) -> [Double] {
+    public func normalize(_ entries: [Chartable]) -> [Double] {
         let justCases = entries.map { entry in
-            Double(entry.new_cases) ?? 0.0
+            Double(entry.count ?? 0)
         }
         scaleFactor = getScaleFactor(justCases)
         return normalize(justCases)
@@ -101,14 +101,10 @@ actor CovidData: ObservableObject {
         try data.write(to: destinationURL)
     }
     
-    private func sort(_ entries: [CovidEntry]) -> [CovidEntry] {
-        let sortedEntries = entries.sorted(by: { alpha, brava in
-            guard let apple = alpha.specimen_collection_date,
-                  let banana = brava.specimen_collection_date else {
-                return false
-            }
-            return apple < banana
-        })
+    private func sort<T: Chartable>(_ entries: [T]) -> [T] {
+        let sortedEntries = entries.sorted {
+            $0.lastUpdated < $1.lastUpdated
+        }
         return sortedEntries
     }
 }

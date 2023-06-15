@@ -25,7 +25,7 @@ struct Provider: IntentTimelineProvider {
         let summaryVM = SummaryViewModel()
         Task.detached(priority: .background) {
             var entries = [CovidWidgetEntry]()
-            try? await summaryVM.update()
+            try? await summaryVM.update(type: .covidHospitalizations)
             let entry = CovidWidgetEntry(date: Date(), model: summaryVM, configuration: configuration)
             entries.append(entry)
             let timeline = Timeline(entries: entries, policy: .atEnd)

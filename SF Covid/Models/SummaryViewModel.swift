@@ -9,10 +9,8 @@ final class SummaryViewModel: SummaryViewRepresentable {
     @Published var chartValues: [Double] = []
     @Published var chartAvaerageValues: [Double] = []
     @Published var days: Int = 60
+    
     private let covidData: CovidData
-    private enum Constants: String {
-        case ChartDays = "ChartDays"
-    }
     
     enum Errors: Error {
         case dataError(reason: String)
@@ -27,11 +25,11 @@ final class SummaryViewModel: SummaryViewRepresentable {
         return savedDays
     }
     
-    private func rollingAverage(_ source: [CovidEntry]) -> [Double] {
+    private func rollingAverage(_ source: [Chartable]) -> [Double] {
         var rollingAverage = [Double]()
         var averages = [Int]()
         for entry in source {
-            guard let value = Int(entry.new_cases) else {
+            guard let value = entry.count else {
                 continue
             }
             if averages.count > 6 {
@@ -53,7 +51,7 @@ final class SummaryViewModel: SummaryViewRepresentable {
 
     
     @MainActor
-    func update(_ userDays: Int? = nil) async throws {
+    func update(_ userDays: Int? = nil, type: SFDataType) async throws {
         withAnimation(.spring()) {
             status = .loading
         }
@@ -64,8 +62,8 @@ final class SummaryViewModel: SummaryViewRepresentable {
         }
         
         do {
-            let updateResult = try await covidData.update()
-            let entries: [CovidEntry]!
+            let updateResult = try await covidData.update(CovidHospitalization.self)
+            let entries: [Chartable]!
             switch updateResult {
             case .success(let networkEntries):
                 entries = networkEntries
@@ -82,8 +80,8 @@ final class SummaryViewModel: SummaryViewRepresentable {
             let lastSeven = Array(entries[oneWeekAgoIndex...])
             self.average = String(average(lastSeven))
             
-            self.caseCount = entries.last?.new_cases ?? "Error"
-            self.lastUpdated = entries.last?.data_as_of?.formatted() ?? "Error"
+            self.caseCount = entries.last?.count?.formatted() ?? "Error"
+            self.lastUpdated = entries.last?.lastUpdated.formatted() ?? "Error"
             
             
             let numberToTrim = entries.count - days // days to display
@@ -107,9 +105,9 @@ final class SummaryViewModel: SummaryViewRepresentable {
         }
     }
     
-    private func average(_ entries: [CovidEntry]) -> Int {
+    private func average(_ entries: [Chartable]) -> Int {
         let sum = entries.reduce(into: 0) { prev, thisEntry in
-            prev += (Int(thisEntry.new_cases) ?? 0)
+            prev += (thisEntry.count ?? 0)
         }
         let average = sum / entries.count
         return average
@@ -126,7 +124,7 @@ final class SummaryViewModel: SummaryViewRepresentable {
         }
         self.days = savedDays
         Task {
-            try await update(days)
+            try await update(days, type: .covidHospitalizations)
         }
     }
 }
